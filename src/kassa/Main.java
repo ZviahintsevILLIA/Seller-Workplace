@@ -1285,6 +1285,7 @@ public class Main extends javax.swing.JFrame {
         
         if ((c==','||c=='.')&&!s.contains(".")) {
             evt.setKeyChar('.');
+            isNeedAddC = false;
         }
         else if (!Character.isDigit(c)) {
             isNeedAddC = false;
