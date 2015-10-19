@@ -951,6 +951,7 @@ public class Main extends javax.swing.JFrame {
         if(model.getRowCount()>0){
             Input_barcode.setText("");
             CashWindowSum.setText(totalPriceValue.getText());
+            CashWindowSum.setToolTipText(MyMath.cashInWords(Double.parseDouble(totalPriceValue.getText())));
             DifferenceValue.setText("0.00");
             EnterCash.setText("");
             EnterCash.setEditable(true);

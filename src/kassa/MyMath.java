@@ -34,11 +34,32 @@ public final class MyMath {
         return s;
     }
     /**
-     * Meyhod returns if Pressed key is number
+     * Method returns String with double value in words
      */
-    static boolean isNumber(java.awt.event.KeyEvent evt){
-        int e = evt.getKeyCode();
-        
-        return (e==46)||(e==44)||((e>=48)&&(e<=57))||((e>=96)&&(e<=105));
+    public static String cashInWords (Double cash) {
+        String s = "";
+        int cashInCents = (BigDecimal.valueOf(cash).movePointRight(2)).intValue();
+        int hrivna = cash.intValue();
+        int cop = cashInCents%100;
+        if (hrivna/1000000>=1) s+=ch999(hrivna / 1000000, "million ");
+        if (hrivna%1000000/1000>=1) s+=ch999(hrivna % 1000000 / 1000, "thousand ");
+        if (hrivna%1000000%1000>=1) s+=ch999(hrivna % 1000000 % 1000, "");
+        if (hrivna>0) s+="hryvnas ";
+        if (hrivna>0&&cop>0) s+="and ";
+        if (cop>0) s+=ch999(cop, "cop.");
+
+        return s;
+    }
+    private static String ch999(int a, String b){
+        if (a<=0) return "";
+        String [] Edin = {"","one ","two ","three ","four ","five ","six ","seven ","eight ","nine ","ten ","eleven ",
+                "twelve ", "thirteen ", "fourteen ", "fifteen ", "sixteen ", "seventeen ", "eighteen ", "nineteen "};
+        String [] Des = {"","","twenty ","thirty ","forty ","fifty ","sixty ","seventy ","eighty ","ninety "};
+        String [] Hundr = {"","one hundred ","two hundred ","three hundred ","four hundred ","five hundred ",
+                "six hundred ","seven hundred ","eight hundred ","nine hundred "};
+        int hundr = a/100;
+        int des = a%100/10;
+        int edin = a%100%10;
+        return Hundr[hundr] + ((des==1)?Edin[edin+10]:Des[des]) + ((des!=1)?Edin[edin]:Edin[0]) + b;
     }
 }
