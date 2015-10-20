@@ -35,6 +35,7 @@ public final class MyMath {
     }
     /**
      * Method returns String with double value in words
+     * Method works with cash under 1 billion
      */
     public static String cashInWords (Double cash) {
         String s = "";

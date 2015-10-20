@@ -1013,11 +1013,11 @@ public class Main extends javax.swing.JFrame {
         int newQuntity;
         try {
             newQuntity = Integer.parseInt(SetQuntityField.getText());//новое количество наименования товара
-            if(newQuntity<1||newQuntity>1000) throw new NumberFormatException();
+            if(newQuntity<1||newQuntity>100) throw new NumberFormatException();
             }
         catch (NumberFormatException e){
             SetQuntityField.setText("");
-            JOptionPane.showMessageDialog(null, "Quantity must be between 1 and 1000!");
+            JOptionPane.showMessageDialog(null, "Quantity must be between 1 and 100!");
             return;
         }
         
